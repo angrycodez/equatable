@@ -17,7 +17,7 @@ mixin EquatableMixin {
   // ignore: avoid_returning_null
   bool? get stringify => null;
 
-  bool ignoreRuntimeType => false;
+  bool get ignoreRuntimeType => false;
 
   @override
   bool operator ==(Object other) {
