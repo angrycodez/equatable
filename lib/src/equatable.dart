@@ -41,11 +41,13 @@ abstract class Equatable {
   // ignore: avoid_returning_null
   bool? get stringify => null;
 
+  bool ignoreRuntimeType => false;
+
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         other is Equatable &&
-            runtimeType == other.runtimeType &&
+            (ignoreRuntimeType || runtimeType == other.runtimeType) &&
             equals(props, other.props);
   }
 

@@ -17,11 +17,13 @@ mixin EquatableMixin {
   // ignore: avoid_returning_null
   bool? get stringify => null;
 
+  bool ignoreRuntimeType => false;
+
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        other is EquatableMixin &&
-            runtimeType == other.runtimeType &&
+        other is Equatable &&
+            (ignoreRuntimeType || runtimeType == other.runtimeType) &&
             equals(props, other.props);
   }
 
